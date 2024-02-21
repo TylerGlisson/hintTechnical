@@ -20,8 +20,8 @@ function translateWord(input) {
     let trimInput = input
 
     // handles punctuation at end of word
-    if (!puncTest.test(input(-1))) {
-        punc = input(-1)
+    if (!puncTest.test(input[-1])) {
+        punc = input[-1]
         trimInput = input.slice(input.length - 1)
     }
     
