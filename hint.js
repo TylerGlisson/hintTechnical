@@ -35,7 +35,16 @@ function translateWord(input) {
 }
 
 function handleCase(input, result) {
+    // edge case: uppercase in middle of word (McDonald)
+    let formatted = result
     const upper = /^[A-Z]/
+    const punc = /^[a-zA-Z]/
+
+    // handles punctuation at end of word
+    if (!punc.test(input(-1))) {
+        
+    }
+    // handles case    
     if (upper.test(input[0])) {
         return result.charAt(0).toUpperCase() + result.slice(1).toLowerCase()
     } else {
