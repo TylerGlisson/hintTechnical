@@ -37,7 +37,7 @@ function translateWord(input) {
 function handleCase(input, result) {
     const upper = /^[A-Z]/
     if (upper.test(input[0])) {
-        return result.charAt(0).toUpperCase() + result.slice(1)
+        return result.charAt(0).toUpperCase() + result.slice(1).toLowerCase()
     } else {
         return result
     }
