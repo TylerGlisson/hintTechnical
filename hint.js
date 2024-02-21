@@ -3,6 +3,7 @@ function translateLongInput(input) {
     const arrOfInputWords = input.split(' ')
     const output = arrOfInputWords.map(word => translateWord(word)).join(' ')
     console.log('Final Result:', output)
+    return output
 }
 
 function translateWord(input) {
@@ -15,7 +16,8 @@ function translateWord(input) {
     let result = ''
 
     if (vowels.includes(input[0])) {
-        result = input + suffix
+        if (input.length === 1) result = input + 'yay'
+        else result = input + suffix
     } else {
         for (let i = 0; i < input.length; i++) {
             if (vowels.includes(input[i])) {
@@ -32,7 +34,7 @@ function translateWord(input) {
 }
 
 // translateInput('hello')
-translateLongInput('hello world')
-translateLongInput('that strange dragon scared them')
-translateLongInput('an aweful attitude is often unpleasant')
-// more tests after we get to this point for edge cases, uppercase, etc..
+// translateLongInput('hello world')
+// translateLongInput('that strange dragon scared them')
+// translateLongInput('an aweful attitude is often unpleasant')
+translateLongInput('a erratta irate')
