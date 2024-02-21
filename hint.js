@@ -15,15 +15,24 @@ function translateWord(input) {
     let root = ''
     let prefix = ''
     let result = ''
+    const puncTest = /^[a-zA-Z]/
+    let punc = ''
+    let trimInput = input
 
-    if (vowels.includes(input[0])) {
-        if (input.length === 1) result = input + 'yay'
-        else result = input + suffix
+    // handles punctuation at end of word
+    if (!puncTest.test(input(-1))) {
+        punc = input(-1)
+        trimInput = input.slice(input.length - 1)
+    }
+    
+    if (vowels.includes(trimInput[0])) {
+        if (trimInput.length === 1) result = trimInput + 'yay'
+        else result = trimInput + suffix
     } else {
-        for (let i = 0; i < input.length; i++) {
-            if (vowels.includes(input[i])) {
-                root = input.slice(i)
-                prefix = input.slice(0, i)
+        for (let i = 0; i < trimInput.length; i++) {
+            if (vowels.includes(trimInput[i])) {
+                root = trimInput.slice(i)
+                prefix = trimInput.slice(0, i)
                 break
             }
         }
@@ -31,20 +40,14 @@ function translateWord(input) {
     }
    
     // console.log('Output:', result)
-    return handleCase(input, result)
+    const cased = handleCase(trimInput, result)
+    return cased + punc
 }
 
 function handleCase(input, result) {
     // edge case: uppercase in middle of word (McDonald)
-    let formatted = result
     const upper = /^[A-Z]/
-    const punc = /^[a-zA-Z]/
-
-    // handles punctuation at end of word
-    if (!punc.test(input(-1))) {
-        
-    }
-    // handles case    
+    
     if (upper.test(input[0])) {
         return result.charAt(0).toUpperCase() + result.slice(1).toLowerCase()
     } else {
