@@ -1,6 +1,14 @@
 function translateInput(input) {
- 
-    
+    console.log('Input:', input)
+    //consider regex??
+    const vowels = ['a', 'e', 'i', 'o', 'u']
+    const suffix = 'ay'
+    let root = ''
+    let prefix = ''
+    let result = ''
+   
+    console.log('Output:', result)
+    return result
 }
 
 translateInput('hello')
