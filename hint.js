@@ -7,25 +7,19 @@ function translateLongInput(input) {
 }
 
 function translateWord(input) {
-    // console.log('Input:', input)
-    //consider regex??
     // edge cases with y as a vowel?
+    const puncTest = /^[a-zA-Z]/
     const vowels = ['a', 'e', 'i', 'o', 'u']
     const suffix = 'ay'
     let root = ''
     let prefix = ''
     let result = ''
-    const puncTest = /^[a-zA-Z]/
     let punc = ''
     let trimInput = input
 
-    // handles punctuation at end of word
-    // console.log('test:', puncTest.test(input[-1]))
-    // console.log(input[-1])
-
     if (!puncTest.test(input[input.length-1])) {
         punc = input[input.length-1]
-        trimInput = input.slice(input.length - 1)
+        trimInput = input.slice(0, -1)
     }
     
     if (vowels.includes(trimInput[0])) {
@@ -42,7 +36,6 @@ function translateWord(input) {
         result = root + prefix + suffix
     }
    
-    // console.log('Output:', result)
     const cased = handleCase(trimInput, result)
     return cased + punc
 }
