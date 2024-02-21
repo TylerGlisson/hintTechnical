@@ -1,5 +1,12 @@
-function translateInput(input) {
+function translateLongInput(input) {
     console.log('Input:', input)
+    const arrOfInputWords = input.split(' ')
+    const output = arrOfInputWords.map(word => translateWord(word)).join(' ')
+    console.log('Final Result:', output)
+}
+
+function translateWord(input) {
+    // console.log('Input:', input)
     //consider regex??
     const vowels = ['a', 'e', 'i', 'o', 'u']
     const suffix = 'ay'
@@ -20,12 +27,12 @@ function translateInput(input) {
         result = root + prefix + suffix
     }
    
-    console.log('Output:', result)
+    // console.log('Output:', result)
     return result
 }
 
-translateInput('hello')
-translateInput('hello world')
-translateInput('that strange dragon scared them')
-translateInput('an aweful attitude is often unpleasant')
+// translateInput('hello')
+translateLongInput('hello world')
+translateLongInput('that strange dragon scared them')
+translateLongInput('an aweful attitude is often unpleasant')
 // more tests after we get to this point for edge cases, uppercase, etc..
