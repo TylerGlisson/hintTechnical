@@ -15,7 +15,6 @@ function translateWord(input) {
     let root = ''
     let prefix = ''
     let result = ''
-    const upper = /^[A-Z]/
 
     if (vowels.includes(input[0])) {
         if (input.length === 1) result = input + 'yay'
@@ -32,7 +31,16 @@ function translateWord(input) {
     }
    
     // console.log('Output:', result)
-    return result
+    return handleCase(input, result)
+}
+
+function handleCase(input, result) {
+    const upper = /^[A-Z]/
+    if (upper.test(input[0])) {
+        return result.charAt(0).toUpperCase() + result.slice(1)
+    } else {
+        return result
+    }
 }
 
 // translateInput('hello')
