@@ -1,5 +1,10 @@
 function translateLongInput(input) {
     console.log('Input:', input)
+    /*
+        edge case: 
+        -spaces at beggining or end of string need to be trimmed?  
+        -Random nonsensical words
+    */
     const arrOfInputWords = input.split(' ')
     const output = arrOfInputWords.map(word => translateWord(word)).join(' ')
     console.log('Final Result:', output)
@@ -17,11 +22,13 @@ function translateWord(input) {
     let punc = ''
     let trimInput = input
 
+    // Checks for non-letter at end of word and trims off temporarily till piggification complete
     if (!puncTest.test(input[input.length-1])) {
         punc = input[input.length-1]
         trimInput = input.slice(0, -1)
     }
     
+    // Checks for words beginning with vowels first
     if (vowels.includes(trimInput[0])) {
         if (trimInput.length === 1) result = trimInput + 'yay'
         else result = trimInput + suffix
@@ -56,5 +63,6 @@ function handleCase(input, result) {
 // translateLongInput('that strange dragon scared them')
 // translateLongInput('an aweful attitude is often unpleasant')
 // translateLongInput('a erratta irate')
-translateLongInput('Wow! hi.')
-translateLongInput('Such a nice, large, friendly, dragon!')
+// translateLongInput('Wow! hi.')
+// translateLongInput('Such a nice, large, friendly, dragon!')
+translateLongInput('There is a fly')
