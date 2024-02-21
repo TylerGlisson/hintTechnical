@@ -6,6 +6,19 @@ function translateInput(input) {
     let root = ''
     let prefix = ''
     let result = ''
+
+    if (vowels.includes(input[0])) {
+        result = input + suffix
+    } else {
+        for (let i = 0; i < input.length; i++) {
+            if (vowels.includes(input[i])) {
+                root = input.slice(i)
+                prefix = input.slice(0, i)
+                break
+            }
+        }
+        result = root + prefix + suffix
+    }
    
     console.log('Output:', result)
     return result
